@@ -45,7 +45,7 @@ xrewQuit();
 Make sure to have `python3` and `git` installed on your system, running the following:
 
 ```bash
-git clone <this repo URL> --recursive
+git clone https://github.com/LIV/XREW.git --recursive
 cd xrew
 python3 gen.py
 ```
