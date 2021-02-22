@@ -93,7 +93,7 @@ for protect in xr_protected_commands_to_load:
 xrew.write("	return XR_TRUE; //TODO error checking\n")
 xrew.write("}\n")
 
-xrew.write("static XrBool32 xrewQuit()\n")
+xrew.write("static void xrewQuit()\n")
 xrew.write("{\n")
 for command in xr_commands_to_load:
 	write_indent(xrew, 1)
@@ -105,7 +105,6 @@ for protect in xr_protected_commands_to_load:
 		write_static_ptr_forget(xrew, command)
 	xrew.write("#endif\n")
 
-xrew.write("	return XR_TRUE; //TODO error checking\n")
 xrew.write("}\n")
 
 write_whitespace(xrew)

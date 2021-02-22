@@ -155,7 +155,7 @@ static XrBool32 xrewInit(XrInstance instance)
 #endif
 	return XR_TRUE; //TODO error checking
 }
-static XrBool32 xrewQuit()
+static void xrewQuit()
 {
 	__xrew_xrPerfSettingsSetPerformanceLevelEXT = NULL;
 	__xrew_xrThermalGetTemperatureTrendEXT = NULL;
@@ -227,7 +227,6 @@ static XrBool32 xrewQuit()
 	__xrew_xrConvertTimespecTimeToTimeKHR = NULL;
 	__xrew_xrConvertTimeToTimespecTimeKHR = NULL;
 #endif
-	return XR_TRUE; //TODO error checking
 }
 
 
