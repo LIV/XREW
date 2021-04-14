@@ -23,6 +23,7 @@
 # SOFTWARE.
 
 import xml.etree.ElementTree as ET
+from datetime import datetime
 
 def write_indent(file, x):
 	for i in range(x):
@@ -54,7 +55,11 @@ def write_whitespace(file):
 
 xrew = open("./xrew.h", "w+")
 
-xrew.write("// This file is autogenertaed by XREW, the OpenXR Extension Wrangler. Do not modify!\n\n")
+xrew.write("// This file is autogenertaed by XREW, the OpenXR Extension Wrangler. Do not modify!\n")
+
+xrew.write("// Timestamp : ")
+xrew.write(datetime.utcnow().isoformat())
+write_whitespace(xrew)
 
 xrew.write("/*\n")
 mit = open("./LICENSE", "r")
