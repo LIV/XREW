@@ -119,7 +119,6 @@ for protect in xr_protected_commands_to_load:
 		write_indent(xrew, 1)
 		write_static_ptr_load(xrew, command)
 	xrew.write("#endif\n")
-
 xrew.write("	return XR_TRUE; //TODO error checking\n")
 xrew.write("}\n")
 
