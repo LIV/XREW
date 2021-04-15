@@ -1,5 +1,5 @@
 // This file is autogenertaed by XREW, the OpenXR Extension Wrangler. Do not modify!
-// Timestamp : 2021-04-14T11:32:33.822741
+// Timestamp : 2021-04-15T09:59:47.157292
 
 /*
 MIT License
@@ -70,6 +70,7 @@ static PFN_xrGetDisplayRefreshRateFB __xrew_xrGetDisplayRefreshRateFB = NULL;
 static PFN_xrRequestDisplayRefreshRateFB __xrew_xrRequestDisplayRefreshRateFB = NULL;
 static PFN_xrEnumerateColorSpacesFB __xrew_xrEnumerateColorSpacesFB = NULL;
 static PFN_xrSetColorSpaceFB __xrew_xrSetColorSpaceFB = NULL;
+static PFN_xrSetEnvironmentDepthEstimationVARJO __xrew_xrSetEnvironmentDepthEstimationVARJO = NULL;
 #ifdef XR_USE_PLATFORM_ANDROID
 static PFN_xrSetAndroidApplicationThreadKHR __xrew_xrSetAndroidApplicationThreadKHR = NULL;
 static PFN_xrCreateSwapchainAndroidSurfaceKHR __xrew_xrCreateSwapchainAndroidSurfaceKHR = NULL;
@@ -144,6 +145,7 @@ static XrBool32 xrewInit(XrInstance instance)
 	xrGetInstanceProcAddr(instance, "xrRequestDisplayRefreshRateFB", (PFN_xrVoidFunction *) &__xrew_xrRequestDisplayRefreshRateFB);
 	xrGetInstanceProcAddr(instance, "xrEnumerateColorSpacesFB", (PFN_xrVoidFunction *) &__xrew_xrEnumerateColorSpacesFB);
 	xrGetInstanceProcAddr(instance, "xrSetColorSpaceFB", (PFN_xrVoidFunction *) &__xrew_xrSetColorSpaceFB);
+	xrGetInstanceProcAddr(instance, "xrSetEnvironmentDepthEstimationVARJO", (PFN_xrVoidFunction *) &__xrew_xrSetEnvironmentDepthEstimationVARJO);
 #ifdef XR_USE_PLATFORM_ANDROID
 	xrGetInstanceProcAddr(instance, "xrSetAndroidApplicationThreadKHR", (PFN_xrVoidFunction *) &__xrew_xrSetAndroidApplicationThreadKHR);
 	xrGetInstanceProcAddr(instance, "xrCreateSwapchainAndroidSurfaceKHR", (PFN_xrVoidFunction *) &__xrew_xrCreateSwapchainAndroidSurfaceKHR);
@@ -218,6 +220,7 @@ static void xrewQuit()
 	__xrew_xrRequestDisplayRefreshRateFB = NULL;
 	__xrew_xrEnumerateColorSpacesFB = NULL;
 	__xrew_xrSetColorSpaceFB = NULL;
+	__xrew_xrSetEnvironmentDepthEstimationVARJO = NULL;
 #ifdef XR_USE_PLATFORM_ANDROID
 	__xrew_xrSetAndroidApplicationThreadKHR = NULL;
 	__xrew_xrCreateSwapchainAndroidSurfaceKHR = NULL;
@@ -291,6 +294,7 @@ static void xrewQuit()
 #define xrRequestDisplayRefreshRateFB	__xrew_xrRequestDisplayRefreshRateFB
 #define xrEnumerateColorSpacesFB	__xrew_xrEnumerateColorSpacesFB
 #define xrSetColorSpaceFB	__xrew_xrSetColorSpaceFB
+#define xrSetEnvironmentDepthEstimationVARJO	__xrew_xrSetEnvironmentDepthEstimationVARJO
 #ifdef XR_USE_PLATFORM_ANDROID
 #define xrSetAndroidApplicationThreadKHR	__xrew_xrSetAndroidApplicationThreadKHR
 #define xrCreateSwapchainAndroidSurfaceKHR	__xrew_xrCreateSwapchainAndroidSurfaceKHR
