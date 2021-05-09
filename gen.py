@@ -144,7 +144,7 @@ xrew.write("}\n")
 
 
 xrew.write("/// Forget about all pointers loaded by XREW. XREW loaded comands are unavailable unless xrewInit() is called again.\n")
-xrew.write("/// \note This function cannot fail.")
+xrew.write("/// \\note This function cannot fail.\n")
 xrew.write("static void xrewQuit()\n")
 xrew.write("{\n")
 write_indent(xrew, 1)
