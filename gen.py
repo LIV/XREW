@@ -49,7 +49,7 @@ def write_static_ptr_forget(file, command):
 	file.write(get_xrew_name(command) + " = NULL;\n")
 
 def wirte_macro_function_stub_call(file, command):
-	file.write("#define " + command + "\t"+ get_xrew_name(command) + "\n")
+	file.write("#define " + command + " "+ "XREW_GET_FUN("+ get_xrew_name(command) + ")" + "\n")
 
 def write_whitespace(file):
 	file.write("\n\n")
@@ -75,6 +75,8 @@ xrew.write("#define __xrew_h\n\n")
 xrew.write("#include <openxr/openxr.h>\n\n")
 
 xrew.write("#ifdef __cplusplus\nextern \"C\"\n{\n#endif\n\n")
+
+xrew.write("#define XREW_GET_FUN(x) x\n\n")
 
 print("XREW generator")
 xr_registry = ET.parse("./OpenXR-SDK-Source/specification/registry/xr.xml")
@@ -106,56 +108,71 @@ print("list of all non-core (extensions) commands in this version of openxr:")
 print(xr_commands_to_load)
 print(xr_protected_commands_to_load)
 
-
+xrew.write("// OpenXR 1.0 Core API:\n")
 for command in xr_commands_to_load:
 	write_static_ptr_def(xrew, command)
 
 for protect in xr_protected_commands_to_load:
+	xrew.write("// " + protect + "\n")
 	xrew.write("#ifdef " + protect + "\n")
 	for command in xr_protected_commands_to_load[protect]:
 		write_static_ptr_def(xrew, command)
-	xrew.write("#endif\n")
+	xrew.write("#endif //" + protect + "\n")
 
 
 write_whitespace(xrew)
 
+xrew.write("/// Initialize XREW. Will load all function pointers accessible via the OpenXR instance.\n")
+xrew.write("/// \\param instance A validly created OpenXR instance\n")
+xrew.write("/// \\returns XR_TRUE if the wrangling of extension fucntion pointers was successful.\n")
 xrew.write("static XrBool32 xrewInit(XrInstance instance)\n")
 xrew.write("{\n")
+write_indent(xrew, 1)
+xrew.write("// OpenXR 1.0 Core API:\n")
 for command in xr_commands_to_load:
 	write_indent(xrew, 1)
 	write_static_ptr_load(xrew, command)
 for protect in xr_protected_commands_to_load:
+	xrew.write("// " + protect + "\n")
 	xrew.write("#ifdef " + protect + "\n")
 	for command in xr_protected_commands_to_load[protect]:
 		write_indent(xrew, 1)
 		write_static_ptr_load(xrew, command)
-	xrew.write("#endif\n")
+	xrew.write("#endif //" + protect + "\n")
 xrew.write("	return XR_TRUE; //TODO error checking\n")
 xrew.write("}\n")
 
+
+xrew.write("/// Forget about all pointers loaded by XREW. XREW loaded comands are unavailable unless xrewInit() is called again.\n")
+xrew.write("/// \note This function cannot fail.")
 xrew.write("static void xrewQuit()\n")
 xrew.write("{\n")
+write_indent(xrew, 1)
+xrew.write("// OpenXR 1.0 Core API:\n")
 for command in xr_commands_to_load:
 	write_indent(xrew, 1)
 	write_static_ptr_forget(xrew, command)
 for protect in xr_protected_commands_to_load:
+	xrew.write("// " + protect + "\n")
 	xrew.write("#ifdef " + protect + "\n")
 	for command in xr_protected_commands_to_load[protect]:
 		write_indent(xrew, 1)
 		write_static_ptr_forget(xrew, command)
-	xrew.write("#endif\n")
+	xrew.write("#endif //" + protect + "\n")
 
 xrew.write("}\n")
 
 write_whitespace(xrew)
-
+xrew.write("// OpenXR 1.0 Core API:\n")
 for command in xr_commands_to_load:
 	wirte_macro_function_stub_call(xrew, command)
 for protect in xr_protected_commands_to_load:
+	xrew.write("// " + protect + "\n")
 	xrew.write("#ifdef " + protect + "\n")
 	for command in xr_protected_commands_to_load[protect]:
 		wirte_macro_function_stub_call(xrew, command)
 	xrew.write("#endif\n")
+	xrew.write("#endif //" + protect + "\n")
 
 
 write_whitespace(xrew)
