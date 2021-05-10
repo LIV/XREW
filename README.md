@@ -60,3 +60,13 @@ will create `xrew.h` in the repository root directory.
 
 Just pull the OpenXR-SDK-Source submodule to a newer version, and call `gen.py` again.
 For convinience, copy and commit the output in `/generated/xrew.h`.
+
+## Legal
+
+`xrew.h` and the generator script
+Copyright (c) 2021 LIV Inc.
+Licensed under the MIT Licence Agreement
+
+XREW logo based on "Face with Cowboy Hat" Twemoji v2 from the Twitter Emoji Project. Original work under Creative Commons Attribution 4.0 International License
+
+*OpenXR™ is a trademark owned by The Khronos Group Inc. and is registered as a trademark in China, the European Union, Japan and the United Kingdom.*
