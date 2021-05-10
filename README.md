@@ -1,4 +1,4 @@
-# XREW  [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+# ![XR purple cowboy emoji](./resources/XR_wranglerx40.png) XREW [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 *generated version commited under /generated/xrew.h : OpenXR 1.0.15 Grab the raw header file here : [xrew.h](https://raw.githubusercontent.com/LIV/XREW/master/generated/xrew.h)*
 
