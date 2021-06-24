@@ -171,7 +171,6 @@ for protect in xr_protected_commands_to_load:
 	xrew.write("#ifdef " + protect + "\n")
 	for command in xr_protected_commands_to_load[protect]:
 		wirte_macro_function_stub_call(xrew, command)
-	xrew.write("#endif\n")
 	xrew.write("#endif //" + protect + "\n")
 
 
