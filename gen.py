@@ -92,6 +92,7 @@ for c_type in xr_types[0]:
 				if child.text == "XR_CURRENT_API_VERSION":
 					next_tail = True
 
+xr_version_string = xr_version
 version = ["","",""]
 if xr_version != "":
 	xr_version = "".join(xr_version.split("(", 1))
@@ -120,6 +121,7 @@ xrew.write("#include <openxr/openxr.h>\n\n")
 
 xrew.write("#ifdef __cplusplus\nextern \"C\"\n{\n#endif\n\n")
 
+xrew.write("#define XREW_GENERATED_VERSION XR_MAKE_VERSION" + xr_version_string + "\n")
 xrew.write("#define XREW_GET_FUN(x) x\n\n")
 
 print("XREW generator")
@@ -162,6 +164,10 @@ xrew.write("/// \\returns XR_TRUE if the wrangling of extension fucntion pointer
 xrew.write("static XrBool32 xrewInit(XrInstance instance)\n")
 xrew.write("{\n")
 write_indent(xrew, 1)
+xrew.write("if (XREW_GENERATED_VERSION > XR_CURRENT_API_VERSION)\n")
+write_indent(xrew, 2)
+xrew.write("return XR_FALSE;\n\n")
+write_indent(xrew, 1)
 xrew.write("// OpenXR 1.0 Core API:\n")
 for command in xr_commands_to_load:
 	write_indent(xrew, 1)
@@ -173,7 +179,7 @@ for protect in xr_protected_commands_to_load:
 		write_indent(xrew, 1)
 		write_static_ptr_load(xrew, command)
 	xrew.write("#endif //" + protect + "\n")
-xrew.write("	return XR_TRUE; //TODO error checking\n")
+xrew.write("	return XR_TRUE;\n")
 xrew.write("}\n")
 
 
