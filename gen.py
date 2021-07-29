@@ -101,6 +101,8 @@ if xr_version != "":
 	for i in range(len(version)):
 		version[i] = version[i].replace(" ", "")
 
+print("OpenXR " + version[0] + "." + version[1] + "." + version[2])
+
 xrew.write("// Timestamp : ")
 xrew.write(datetime.utcnow().isoformat())
 xrew.write("\n")
@@ -141,8 +143,16 @@ for ext in xr_extensions[0]:
 
 
 print("list of all non-core (extensions) commands in this version of openxr:")
-print(xr_commands_to_load)
-print(xr_protected_commands_to_load)
+for command in xr_commands_to_load:
+	print(" - " + command)
+for protect in xr_protected_commands_to_load:
+	print("Protected by " + protect)
+	for command in xr_protected_commands_to_load[protect]:
+		print(" - " + command)
+
+
+#print(xr_commands_to_load)
+#print(xr_protected_commands_to_load)
 
 xrew.write("// OpenXR 1.0 Core API:\n")
 for command in xr_commands_to_load:
