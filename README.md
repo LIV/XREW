@@ -1,6 +1,6 @@
 # ![XR purple cowboy emoji](./resources/XR_wranglerx40.png) XREW [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-*generated version commited under /generated/xrew.h : OpenXR 1.0.23 Grab the raw header file here : [xrew.h](https://raw.githubusercontent.com/LIV/XREW/master/generated/xrew.h)*
+*generated version commited under /generated/xrew.h : OpenXR 1.0.24 Grab the raw header file here : [xrew.h](https://raw.githubusercontent.com/LIV/XREW/master/generated/xrew.h)*
 
 XREW is a single-header OpenXR Extension Wrangler, generated from the [OpenXR registry](https://github.com/KhronosGroup/OpenXR-SDK-Source/blob/master/specification/registry/xr.xml)
 
