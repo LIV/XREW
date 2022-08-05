@@ -55,6 +55,9 @@ will create `xrew.h` in the repository root directory.
 
 > Note that you need to clone the OpenXR SDK submodule to have access to the machine-readable API registry (`xr.xml`).
 
+### Custom xr.xml
+
+You can specify as an argument to `gen.py` the path to another xr.xml file that is not the submodule
 
 ## How to upgrade XREW to newer OpenXR release
 
@@ -64,7 +67,7 @@ For convinience, copy and commit the output in `/generated/xrew.h`.
 ## Legal
 
 `xrew.h` and the generator script
-Copyright (c) 2021 LIV Inc.
+Copyright (c) 2021-2022 LIV Inc.
 Licensed under the MIT Licence Agreement
 
 XREW logo based on "Face with Cowboy Hat" Twemoji v2 from the Twitter Emoji Project. Original work under Creative Commons Attribution 4.0 International License
