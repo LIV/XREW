@@ -4,13 +4,13 @@
 
 XREW is a single-header OpenXR Extension Wrangler, generated from the [OpenXR registry](https://github.com/KhronosGroup/OpenXR-SDK-Source/blob/master/specification/registry/xr.xml)
 
-This automate the task of calling `xrGetInstanceProcAddr()` for every non-core function you may need. This do not replace, but intead complement, the OpenXR loader present in the SDK.
+This automate the task of calling `xrGetInstanceProcAddr()` for every non-core function you may need. This do not replace, but instead complement, the OpenXR loader present in the SDK.
 
 Naming and general "way of working" is inspired by [GLEW](http://glew.sourceforge.net/). However, XREW is a really small header only library and do not interfere with the linking process.
 
 ## How to use XREW
 
-Obain a copy of `xrew.h` by downloading it here, cloning this repository, or by generating it yourself from the python script and the registry.
+Obtain a copy of `xrew.h` by downloading it here, cloning this repository, or by generating it yourself from the python script and the registry.
 
 ```C
 //Include the header only library:
